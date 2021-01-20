@@ -5,7 +5,7 @@
     setlocale(LC_ALL, 'pt_BR');
 
     // Consulta ao banco de dados
-    $produtos = "SELECT produtoID, nomeproduto, tempoentrega, precounitario, imagempequena ";
+    $produtos = "SELECT produtoID, nomeproduto, tempoentrega, precounitario, imagempequena, precorevenda ";
     $produtos .= "FROM produtos ";
     $resultado = mysqli_query($conecta, $produtos);
     if(!$resultado) {
@@ -35,10 +35,16 @@
                 while($linha = mysqli_fetch_assoc($resultado)) {
             ?>
                 <ul>
-                    <li class="imagem"><img src="<?php echo  $linha["imagempequena"] ?>"></li>
+                    <li class="imagem">
+                        <a href="detalhe.php?codigo=<?php echo $linha['produtoID']?>">
+                            <img src="<?php echo  $linha["imagempequena"] ?>">
+                        </a>
+                    </li>
                     <li><h3><?php echo $linha["nomeproduto"] ?></h3></li>
-                    <li>Tempo de Entrega : <?php echo $linha["tempoentrega"] ?></li>
+                    <li>Tempo de Entrega : <?php echo $linha["tempoentrega"] ?> Dias</li>
                     <li>Preço unitário : <?php echo real_format($linha["precounitario"]) ?></li>
+                    <li>Preço unitário : <?php echo real_format($linha["precorevenda"]) ?></li>
+
                 </ul>
              <?php
                 }
