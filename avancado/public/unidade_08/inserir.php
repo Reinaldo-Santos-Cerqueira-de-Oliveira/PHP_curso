@@ -1,5 +1,24 @@
 <?php require_once("../../conexao/conexao.php"); ?>
 <?php
+    if(isset($_POST["nometransportadora"])){
+        $nome               =   $_POST["nometransportadora"];
+        $endereco           =   $_POST["endereco"];
+        $telefone           =   $_POST["telefone"];
+        $cidade             =   $_POST["cidade"];
+        $estados            =   $_POST["estados"];
+        $cep                =   $_POST["cep"];
+        $cnpj               =   $_POST["cnpj"];
+
+        $inserir            =   "INSERT INTO transportadoras ";
+        $inserir           .=   "(nometransportadora, endereco, telefone, cidade, estadoID, cep, cnpj) ";
+        $inserir           .=   "VALUES ";
+        $inserir           .=   "('$nome','$endereco','$telefone','$cidade',$estados,'$cep','$cnpj')";
+        $operecao_inserir   =   mysqli_query($conecta, $inserir);
+        if(!$operecao_inserir){
+            die("falha na consulta ao banco");  
+        }
+    }
+
     $select         =   "SELECT estadoID, nome FROM estados ";
     $lista_estados  =   mysqli_query($conecta,$select);
     if( !$lista_estados){
@@ -14,7 +33,7 @@
         
         <!-- estilo -->
         <link href="_css/estilo.css" rel="stylesheet">
-        <link href="_css/crud.css" rel="stylesheet">
+        <link href="../unidade_09/_css/alteracao.css" rel="stylesheet">
 
     </head>
 
@@ -29,7 +48,7 @@
                     <input type="text" name="endereco" id="endereco" placeholder="Endereço">
                     <input type="text" name="telefone" id="telefone" placeholder="Telefone">
                     <input type="text" name="cidade" id="cidade" placeholder="Cidade">
-                    <select name="estados" id="estados">
+                    <select name="estados" id="estados" style="textcolor:black">
                         <?php
                             while ($linha = mysqli_fetch_assoc($lista_estados)){
                         ?>
