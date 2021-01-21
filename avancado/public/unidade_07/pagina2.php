@@ -1,4 +1,7 @@
 <?php require_once("../../conexao/conexao.php"); ?>
+<?php 
+    session_start();
+?>
 <!doctype html>
 <html>
     <head>
@@ -14,6 +17,14 @@
         <?php include_once("../_incluir/funcoes.php"); ?>
         
         <main>
+            <?php 
+                if(isset($_SESSION["usuario"])){
+                    echo $_SESSION["usuario"];
+                }
+            ?>
+            <p>
+                <a href="logout.php">Logout</a>
+            </p>
 
         </main>
 
