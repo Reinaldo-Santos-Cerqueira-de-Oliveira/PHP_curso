@@ -48,7 +48,7 @@
                     <input type="text" name="endereco" id="endereco" placeholder="Endereço">
                     <input type="text" name="telefone" id="telefone" placeholder="Telefone">
                     <input type="text" name="cidade" id="cidade" placeholder="Cidade">
-                    <select name="estados" id="estados" style="textcolor:black">
+                    <select name="estados" id="estados" >
                         <?php
                             while ($linha = mysqli_fetch_assoc($lista_estados)){
                         ?>

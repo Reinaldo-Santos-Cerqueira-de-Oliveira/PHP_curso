@@ -1,5 +1,11 @@
 <?php require_once("../../conexao/conexao.php"); ?>
-
+<?php require_once("../../public/_incluir/funcao_email.php")?>
+<?php
+    if(isset($_POST['nome'])){
+        $retorn = enviarMensagem($_POST);
+        print_r($retorn);
+    }
+?>
 <!doctype html>
 <html>
     <head>
