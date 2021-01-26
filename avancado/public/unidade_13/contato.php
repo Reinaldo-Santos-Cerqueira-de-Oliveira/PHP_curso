@@ -2,8 +2,12 @@
 <?php require_once("../../public/_incluir/funcao_email.php")?>
 <?php
     if(isset($_POST['nome'])){
-        $retorn = enviarMensagem($_POST);
-        print_r($retorn);
+        if(enviarMensagem($_POST)){
+            $mensagem   = "Enviada com sucesso.";
+        }else{
+            $mensagem   = "Erro no envio";
+        }
+   
     }
 ?>
 <!doctype html>

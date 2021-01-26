@@ -17,5 +17,6 @@
         $mensagem_email     .=  "mensagem : " . " <br>";
         $mensagem_email     .=  $mensagem;
 
+        return mail($destino, $assunto, $mensagem, $remetente);
     }
 ?>
